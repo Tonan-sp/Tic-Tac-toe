@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morpion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="game-card" aria-labelledby="game-title">
+      <p class="eyebrow">Deux joueurs · Une partie</p>
+      <h1 id="game-title">Morpion</h1>
+      <p class="subtitle">Alignez trois symboles pour remporter la partie.</p>
+
+      <div class="scoreboard" aria-label="Score de la partie">
+        <div class="score score-x active" data-player="X">
+          <span class="score-symbol">X</span>
+          <span class="score-label">Joueur 1</span>
+          <strong id="score-x">0</strong>
+        </div>
+        <div class="turn-indicator" id="turn-indicator" aria-live="polite">Au tour de X</div>
+        <div class="score score-o" data-player="O">
+          <span class="score-symbol">O</span>
+          <span class="score-label">Joueur 2</span>
+          <strong id="score-o">0</strong>
+        </div>
+      </div>
+
+      <div class="board" id="board" role="grid" aria-label="Grille de morpion">
+        <button class="cell" type="button" data-index="0" role="gridcell" aria-label="Case 1"></button>
+        <button class="cell" type="button" data-index="1" role="gridcell" aria-label="Case 2"></button>
+        <button class="cell" type="button" data-index="2" role="gridcell" aria-label="Case 3"></button>
+        <button class="cell" type="button" data-index="3" role="gridcell" aria-label="Case 4"></button>
+        <button class="cell" type="button" data-index="4" role="gridcell" aria-label="Case 5"></button>
+        <button class="cell" type="button" data-index="5" role="gridcell" aria-label="Case 6"></button>
+        <button class="cell" type="button" data-index="6" role="gridcell" aria-label="Case 7"></button>
+        <button class="cell" type="button" data-index="7" role="gridcell" aria-label="Case 8"></button>
+        <button class="cell" type="button" data-index="8" role="gridcell" aria-label="Case 9"></button>
+      </div>
+
+      <p class="message" id="message" aria-live="polite">X commence la partie</p>
+      <div class="actions">
+        <button class="reset-button" id="reset-button" type="button">Réinitialiser la partie</button>
+        <button class="reset-button secondary" id="reset-scores-button" type="button">Réinitialiser les scores</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
