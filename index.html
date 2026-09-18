@@ -9,20 +9,20 @@
 <body>
   <main class="game-shell">
     <section class="game-card" aria-labelledby="game-title">
-      <p class="eyebrow">Deux joueurs · Une partie</p>
+      <p class="eyebrow">Deux joueurs · En ligne</p>
       <h1 id="game-title">Morpion</h1>
       <p class="subtitle">Alignez trois symboles pour remporter la partie.</p>
 
       <div class="scoreboard" aria-label="Score de la partie">
         <div class="score score-x active" data-player="X">
           <span class="score-symbol">X</span>
-          <span class="score-label">Joueur 1</span>
+          <span class="score-label">Joueur X</span>
           <strong id="score-x">0</strong>
         </div>
-        <div class="turn-indicator" id="turn-indicator" aria-live="polite">Au tour de X</div>
+        <div class="turn-indicator" id="turn-indicator" aria-live="polite">Connexion...</div>
         <div class="score score-o" data-player="O">
           <span class="score-symbol">O</span>
-          <span class="score-label">Joueur 2</span>
+          <span class="score-label">Joueur O</span>
           <strong id="score-o">0</strong>
         </div>
       </div>
@@ -39,13 +39,16 @@
         <button class="cell" type="button" data-index="8" role="gridcell" aria-label="Case 9"></button>
       </div>
 
-      <p class="message" id="message" aria-live="polite">X commence la partie</p>
+      <p class="message" id="message" aria-live="polite">En attente de connexion au serveur...</p>
       <div class="actions">
-        <button class="reset-button" id="reset-button" type="button">Réinitialiser la partie</button>
+        <button class="reset-button" id="reset-button" type="button">Réinitialiser la grille</button>
         <button class="reset-button secondary" id="reset-scores-button" type="button">Réinitialiser les scores</button>
       </div>
     </section>
   </main>
+
+  <!-- Inclusion de Socket.io Client -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
