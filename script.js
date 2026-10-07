@@ -1,5 +1,8 @@
+console.log("script.js DEBUT");
+
 // Connexion au serveur WebSocket hébergé sur Render
-const socket = io("https://morpion-backend-qnv2.onrender.com");
+//const socket = io("https://morpion-backend-qnv2.onrender.com");
+const socket = io("http://192.168.1.107:3000");
 
 const cells = [...document.querySelectorAll('.cell')];
 const message = document.querySelector('#message');
@@ -104,6 +107,10 @@ function handleCellClick(event) {
   applyMove(index, mySymbol);
 
   // Envoyer le coup au serveur pour informer l'autre joueur
+  console.log("socket emit makeMove");
+  console.log("currentRoom : " + currentRoom);
+  console.log("index : " + index);
+  console.log("mySymbol : " + mySymbol);
   socket.emit('makeMove', {
     room: currentRoom,
     index: index,
@@ -141,12 +148,17 @@ function resetScores() {
 
 // Reçu quand le joueur est en attente d'un adversaire
 socket.on('waiting', (msg) => {
+  console.log("socket.on('waiting'");
+  console.log(msg);
   message.textContent = msg;
   turnIndicator.textContent = 'Recherche...';
 });
 
 // Reçu lorsque deux joueurs sont jumelés
 socket.on('startGame', (data) => {
+  console.log("socket.on('startGame'");
+  console.log(data);
+
   mySymbol = data.symbol;
   currentRoom = data.room;
   isMyTurn = data.myTurn;
@@ -164,6 +176,8 @@ socket.on('startGame', (data) => {
 
 // Reçu lorsqu'un coup est joué par l'adversaire
 socket.on('moveMade', (data) => {
+  console.log("socket.on('moveMade'");
+  console.log(data);
   applyMove(data.index, data.symbol);
 });
 
@@ -171,3 +185,5 @@ socket.on('moveMade', (data) => {
 cells.forEach((cell) => cell.addEventListener('click', handleCellClick));
 resetButton.addEventListener('click', resetGameLocal);
 resetScoresButton.addEventListener('click', resetScores);
+
+console.log("script.js FIN");
